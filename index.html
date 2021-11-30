@@ -45,7 +45,7 @@
 
                 <!-- sezione input di ricerca tra i contatti -->
                 <div class="input_src">
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" @keyup.exact = "searchContact()" v-model = "insContact">
                     <i class="fas fa-search"></i>
                 </div>
 

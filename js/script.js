@@ -85,6 +85,7 @@ const app = new Vue({
 
         counter : 0,
         newUserMsg : '',
+        insContact : ''
     },
 
     methods : {
@@ -113,6 +114,10 @@ const app = new Vue({
                     status : 'recevied'
                 }
             );
+        },
+
+        searchContact : function() {
+            console.log(this.insContact);
         }
     }
 })
