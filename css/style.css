@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .container {
     height: 100vh;
     background: rgb(217,219,212);
@@ -15,7 +19,7 @@
 }
 
 #root {
-    width: 80%;
+    width: 88%;
 }
 
 .clearfix::after {
@@ -26,6 +30,10 @@
 
 .left {
     float: left;
+}
+
+.right {
+    float: right;
 }
 
 img {
@@ -178,6 +186,34 @@ ul.contacts li:hover {
 .content_message {
     height: calc(100% - 120px);
     background-image: url('../img/mine.jpg');
+    padding: 40px 80px;
+    overflow: auto;
+}
+
+.messages {
+    list-style: none;
+}
+
+.messages .message {
+    width: 45%;
+    padding: 20px 10px 0 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.messages .contact_msg {
+    background-color: #ffffff;
+}
+
+.messages .user_msg {
+    background-color: #d5f9ba;
+}
+
+.date_message {
+    color: grey;
+    font-size: 11px;
+    text-align: right;
+    padding: 5px 0;
 }
 
 
