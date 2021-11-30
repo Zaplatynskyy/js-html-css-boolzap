@@ -15,6 +15,7 @@
 </head>
 <body class="debug">
     <div class="container">
+
         <!-- elemento root che contiene la finestra whatsapp -->
         <div id="root" class="clearfix">
             <!-- colonna di sinistra con la rubrica -->
@@ -22,7 +23,7 @@
                 <!-- sezione utente user con foto profilo, nome e bottoni utili -->
                 <div class="user">
                     <div class="profile">
-                        <img src="img/avatar_1.jpg" alt="">
+                        <img src="img/avatar_5.jpg" alt="">
                         <div class="name">Nome Utente</div>
                     </div>
 
@@ -50,21 +51,13 @@
 
                 <!-- sezione contatti -->
                 <ul class="contacts">
-                    <li class="selected">
-                        <img src="img/avatar_2.jpg" alt="">
-                        <div class="name">Michele</div>
-                    </li>
-                    <li>
-                        <img src="img/avatar_3.jpg" alt="">
-                        <div class="name">Fabio</div>
-                    </li>
-                    <li>
-                        <img src="img/avatar_4.jpg" alt="">
-                        <div class="name">Samuele</div>
-                    </li>
-                    <li>
-                        <img src="img/avatar_6.jpg" alt="">
-                        <div class="name">Luisa</div>
+                    <li 
+                        v-for="(contact, i) in contacts" 
+                        :class="counter == i ? 'selected' : '' "
+                        @click="counter = i"
+                    >
+                        <img :src=" 'img/avatar'+ contact.avatar +'.jpg' " alt="">
+                        <div class="name">{{contact.name}}</div>
                     </li>
                 </ul>
 
@@ -75,7 +68,7 @@
                 <!-- sezione contatto selezionato -->
                 <div class="contact_selected">
                     <div class="profile">
-                        <img src="img/avatar_2.jpg" alt="">
+                        <img src="img/avatar_1.jpg" alt="">
                         <div class="text">
                             <div class="name">Michele</div>
                             <div class="last_message">Ultimo accesso oggi alle</div>
