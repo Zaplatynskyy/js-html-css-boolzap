@@ -101,6 +101,18 @@ const app = new Vue({
                 }
             );
             this.newUserMsg = '';
+
+            setTimeout(this.receveMessage, 1000);
+        },
+
+        receveMessage : function() {
+            this.contacts[this.counter].messages.push(
+                {
+                    date : 'da definire',
+                    message : 'Ok',
+                    status : 'recevied'
+                }
+            );
         }
     }
 })
