@@ -4,3 +4,96 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.container {
+    height: 100vh;
+    background: rgb(217,219,212);
+    background: linear-gradient(0deg, rgba(217,219,212,1) 85%, rgba(0,150,136,1) 85%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#root {
+    width: 80%;
+    height: 95vh;
+}
+
+.clearfix::after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+/* sezione colonna di sinistra */
+
+.col_sx {
+    width: 35%;
+    height: 100%;
+}
+
+ul.contacts li {
+    list-style: none;
+    padding: 10px;
+}
+/* sezione colonna di destra */
+
+.col_dx {
+    width: 65%;
+    height: 100%;
+}
+
+
+/* ******DEBUG****** */
+/* .debug #root {
+    background-color: green;
+} */
+
+/* debug colonna di destra */
+.debug .col_sx {
+    background-color: red;
+}
+
+.debug .user {
+    height: 60px;
+    background-color: blue;
+}
+
+.debug .notifiche {
+    height: 80px;
+    background-color: gray;
+}
+
+.debug .input_src {
+    height: 50px;
+    background-color: blue;
+}
+
+ul.contacts li {
+    height: 80px;
+    border: 1px solid black;
+}
+/* debug colonna di sinistra */
+.debug .col_dx {
+    background-color: yellow;
+}
+
+.debug .contact_selected {
+    height: 60px;
+    background-color: blue;
+    border-left: 1px solid black;
+}
+
+.debug .content_message {
+    height: calc(100% - 120px);
+    background-color: lightgrey;
+}
+
+.debug .input_message {
+    height: 60px;
+    background-color: blue;
+}
