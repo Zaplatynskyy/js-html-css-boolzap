@@ -36,6 +36,85 @@
     height: 100%;
 }
 
+/* <!-- sezione utente user con foto profilo, nome e bottoni utili --> */
+.user {
+    height: 60px;
+    background: #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+
+.user_buttons i {
+    color: #b1b1b1;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+/* sezione bottone attivazione notifiche */
+.notifiche {
+    background-color: #8edafc;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.notifiche i {
+    color: #8edafc;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 100%;
+    margin-right: 10px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.btn_text {
+    color: #6090a6;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.btn_text:hover {
+    text-decoration: none;
+}
+
+/* sezione input di ricerca tra i contatti */
+.input_src {
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 5px 0;
+}
+
+.input_src input {
+    width: 95%;
+    border: none;
+    padding: 10px 80px;
+}
+
+.input_src i {
+    color: #b6b9bb;
+    position: absolute;
+    left: 40px;
+}
+
+
+
 ul.contacts li {
     list-style: none;
     padding: 10px;
@@ -58,20 +137,20 @@ ul.contacts li {
     background-color: red;
 }
 
-.debug .user {
+/* .debug .user {
     height: 60px;
     background-color: blue;
-}
+} */
 
-.debug .notifiche {
+/* .debug .notifiche {
     height: 80px;
     background-color: gray;
-}
+} */
 
-.debug .input_src {
+/* .debug .input_src {
     height: 50px;
     background-color: blue;
-}
+} */
 
 ul.contacts li {
     height: 80px;
