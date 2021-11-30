@@ -84,11 +84,12 @@ const app = new Vue({
         ],
 
         counter : 0,
-
     },
 
     methods : {
-
+        selectContact : function(i) {
+            this.counter = i
+        }
     }
 })
 
