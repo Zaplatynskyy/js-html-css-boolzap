@@ -85,7 +85,8 @@ const app = new Vue({
 
         counter : 0,
         newUserMsg : '',
-        insContact : ''
+        insContact : '',
+        string : ''
     },
 
     methods : {
@@ -116,8 +117,12 @@ const app = new Vue({
             );
         },
 
-        searchContact : function() {
-            console.log(this.insContact);
+        searchContact : function(i) {
+            if( this.contacts[i].name.toLowerCase().includes(this.insContact.toLowerCase()) ) {
+                return true
+            } else {
+                return false
+            }
         }
     }
 })
