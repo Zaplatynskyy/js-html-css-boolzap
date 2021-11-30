@@ -16,7 +16,6 @@
 
 #root {
     width: 80%;
-    /* height: 95vh; */
 }
 
 .clearfix::after {
@@ -39,7 +38,7 @@ img {
     background-color: #e9ebeb;
 }
 
-/* sezione colonna di sinistra */
+/******** sezione colonna di sinistra */
 
 .col_sx {
     width: 35%;
@@ -48,7 +47,7 @@ img {
 }
 
 /* <!-- sezione utente user con foto profilo, nome e bottoni utili --> */
-.user {
+.user, .contact_selected {
     height: 60px;
     background: #eaeaea;
     display: flex;
@@ -113,7 +112,7 @@ img {
     padding: 10px 80px;
 }
 
-.input_src input:focus-visible {
+.input_src input:focus-visible, .input_message input:focus-visible {
     outline-color: lightgrey;
     outline-style: ridge;
 }
@@ -146,17 +145,68 @@ ul.contacts li:hover {
     margin-left: 15px;
 }
 
-
-
-
-
-
-/* sezione colonna di destra */
+/******** sezione colonna di destra */
 
 .col_dx {
     width: 65%;
     height: 95vh;
 }
+
+/* sezione contatto selezionato */
+.contact_selected {
+    border-left: 1px solid #e0e0e0;
+}
+
+/* .user, .contact_selected {
+    height: 60px;
+    background: #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+} */
+
+.contact_selected .text {
+    margin-left: 10px;
+}
+
+.text .last_message {
+    color: grey;
+}
+
+/* finestra di dialogo con il contatto selezionato */
+.content_message {
+    height: calc(100% - 120px);
+    background-image: url('../img/mine.jpg');
+}
+
+
+/* sezione input messaggio dell'utente user */
+.input_message {
+    height: 60px;
+    background-color: #f3eeea;
+    display: flex;
+    align-items: center;
+}
+
+.input_message input {
+    width: 100%;
+    border: none;
+    padding: 10px;
+}
+
+.input_message i {
+    font-size: 20px;
+    color: #6b7376;
+    margin: 0 30px;
+    cursor: pointer;
+}
+
+/* .input_src input:focus-visible, 
+.input_message input:focus-visible {
+    outline-color: lightgrey;
+    outline-style: ridge;
+} */
 
 
 
@@ -191,22 +241,22 @@ ul.contacts li:hover {
     border: 1px solid black;
 } */
 /* debug colonna di sinistra */
-.debug .col_dx {
+/* .debug .col_dx {
     background-color: yellow;
-}
+} */
 
-.debug .contact_selected {
+/* .debug .contact_selected {
     height: 60px;
     background-color: blue;
     border-left: 1px solid black;
-}
+} */
 
-.debug .content_message {
+/* .debug .content_message {
     height: calc(100% - 120px);
     background-color: lightgrey;
-}
+} */
 
-.debug .input_message {
+/* .debug .input_message {
     height: 60px;
-    background-color: blue;
-}
+    background-color: #f3eeea
+} */
