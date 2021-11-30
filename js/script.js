@@ -84,11 +84,23 @@ const app = new Vue({
         ],
 
         counter : 0,
+        newUserMsg : '',
     },
 
     methods : {
         selectContact : function(i) {
             this.counter = i
+        },
+
+        sentMessage : function() {
+            this.contacts[this.counter].messages.push(
+                {
+                    date : 'da definire',
+                    message : this.newUserMsg,
+                    status : 'sent'
+                }
+            );
+            this.newUserMsg = '';
         }
     }
 })

@@ -86,8 +86,7 @@
                 <div class="content_message">
                     <ul class="messages">
                         <li v-for = "message in contacts[counter].messages" class="clearfix">
-                            <div class="message" 
-                            :class=" message.status == 'sent' ? 'user_msg right' : 'contact_msg left' ">
+                            <div class="message" :class=" message.status == 'sent' ? 'user_msg right' : 'contact_msg left' ">
                                 <span>{{message.message}}</span>
                                 <div class="date_message">{{message.date}}</div>
                             </div>
@@ -98,7 +97,7 @@
                 <!-- sezione input messaggio dell'utente user -->
                 <div class="input_message">
                     <i class="far fa-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio">
+                    <input type="text" placeholder="Scrivi un messaggio" v-model = "newUserMsg" @keyup.enter = "sentMessage()">
                     <i class="fas fa-microphone"></i>
                 </div>
             </div>
