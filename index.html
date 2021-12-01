@@ -58,7 +58,14 @@
                     @click="selectContact(i)"
                 >
                     <img :src=" 'img/avatar'+ contact.avatar +'.jpg' " alt="">
-                    <div class="name">{{contact.name}}</div>
+                    <div class="text_contact">
+                        <div class="name_last_msg clearfix">
+                            <div class="name left">{{contact.name}}</div>
+                            <div class="last_msg_date right">{{lastMessageDate(i)}}</div>
+                        </div>
+                        <div class="last_contact_msg" :class="{black : (counter == i)}">{{lastMessage(i)}}</div>
+                    </div>
+                    
                 </li>
             </ul>
 
