@@ -94,7 +94,7 @@ const app = new Vue({
             },
         ],
 
-        counter : 0,
+        counter : null,
         newUserMsg : '',
         insContact : '',
         string : '',
