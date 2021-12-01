@@ -17,7 +17,7 @@
     
     <!-- elemento root che contiene la finestra whatsapp -->
     <div id="root" class="container clearfix">
-
+        
         <!-- colonna di sinistra con la rubrica -->
         <div class="col_sx left">
             <!-- sezione utente user con foto profilo, nome e bottoni utili -->
@@ -76,13 +76,18 @@
         <div class="col_dx left">
 
             <div v-if="counter == null" class="container_contact_unselected">
+
                 <img src="img/intro-whatsapp.jpg" alt="">
+
                 <div class="title">Mantieni il telefono connesso</div>
                 <p class="subtitle">WhatsApp si collega al tuo telefono per sincronizzare i messaggi. Per ridurre l'utilizzo dei dati, collega il telefono al Wi-Fi</p>
+
                 <div class="footer">
+                    <i class="fas fa-laptop"></i>
                     <span>Chiama da desktop con WhatsApp per Windows.</span>
                     <a href="#">Scaricala qui.</a>
                 </div>
+
             </div>
             
             <div v-else class="container_contact_selected">
@@ -106,7 +111,9 @@
                 <!-- finestra di dialogo con il contatto selezionato -->
                 <div class="content_message">
                     <ul class="messages">
+
                         <li v-for = "(message, i) in contacts[counter].messages" class="clearfix">
+                            
                             <div class="message" :class=" message.status == 'sent' ? 'user_msg right' : 'contact_msg left' ">
                                 <span>{{message.message}}</span>
                                 <div class="date_message">
@@ -114,7 +121,9 @@
                                     <i v-show = "message.status == 'sent'" class="fas fa-check"></i>
                                 </div>
                             </div>
+
                         </li>
+
                     </ul>
                 </div>
 
