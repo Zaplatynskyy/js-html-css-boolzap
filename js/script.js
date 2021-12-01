@@ -95,9 +95,10 @@ const app = new Vue({
         },
 
         sentMessage : function() {
+            const data = dayjs().format('DD/MM/YYYY HH:mm:ss');
             this.contacts[this.counter].messages.push(
                 {
-                    date : 'da definire',
+                    date : data,
                     message : this.newUserMsg,
                     status : 'sent'
                 }
@@ -108,9 +109,10 @@ const app = new Vue({
         },
 
         receveMessage : function() {
+            const data = dayjs().format('DD/MM/YYYY HH:mm:ss');
             this.contacts[this.counter].messages.push(
                 {
-                    date : 'da definire',
+                    date : data,
                     message : 'Ok',
                     status : 'recevied'
                 }

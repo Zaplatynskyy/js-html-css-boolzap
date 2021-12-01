@@ -6,19 +6,15 @@
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-}
-
-.container {
+    font-family: 'Lato', sans-serif;
     height: 100vh;
-    background: rgb(217,219,212);
     background: linear-gradient(0deg, rgba(217,219,212,1) 85%, rgba(0,150,136,1) 85%);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#root {
+.container {
     width: 88%;
 }
 

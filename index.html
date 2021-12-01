@@ -11,102 +11,104 @@
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> 
 </head>
 <body class="debug">
-    <div class="container">
+    
+    <!-- elemento root che contiene la finestra whatsapp -->
+    <div id="root" class="container clearfix">
 
-        <!-- elemento root che contiene la finestra whatsapp -->
-        <div id="root" class="clearfix">
-            <!-- colonna di sinistra con la rubrica -->
-            <div class="col_sx left">
-                <!-- sezione utente user con foto profilo, nome e bottoni utili -->
-                <div class="user">
-                    <div class="profile">
-                        <img src="img/avatar_5.jpg" alt="">
-                        <div class="name">Nome Utente</div>
-                    </div>
-
-                    <div class="user_buttons">
-                        <i class="fas fa-circle-notch"></i>
-                        <i class="fas fa-comment-alt"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
+        <!-- colonna di sinistra con la rubrica -->
+        <div class="col_sx left">
+            <!-- sezione utente user con foto profilo, nome e bottoni utili -->
+            <div class="user">
+                <div class="profile">
+                    <img src="img/avatar_5.jpg" alt="">
+                    <div class="name">Nome Utente</div>
                 </div>
 
-                <!-- sezione bottone attivazione notifiche -->
-                <div class="notifiche">
-                    <i class="fas fa-bell-slash"></i>
-                    <div class="text">
-                        <span>Ricevi notifiche di nuovi messaggi</span>
-                        <div class="btn_text">Attiva notifiche desktop</div>
-                    </div>
+                <div class="user_buttons">
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
                 </div>
-
-                <!-- sezione input di ricerca tra i contatti -->
-                <div class="input_src">
-                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model = "insContact">
-                    <i class="fas fa-search"></i>
-                </div>
-
-                <!-- sezione contatti -->
-                <ul class="contacts">
-                    <li 
-                        v-if ="searchContact(i)"
-                        v-for="(contact, i) in contacts" 
-                        :class="counter == i ? 'selected' : '' "
-                        @click="selectContact(i)"
-                    >
-                        <img :src=" 'img/avatar'+ contact.avatar +'.jpg' " alt="">
-                        <div class="name">{{contact.name}}</div>
-                    </li>
-                </ul>
-
             </div>
 
-            <!-- colonna di destra con la finestra dei messaggi -->
-            <div class="col_dx left">
-                <!-- sezione contatto selezionato -->
-                <div class="contact_selected">
-                    <div class="profile">
-                        <img :src=" 'img/avatar'+ contacts[counter].avatar +'.jpg' " alt="">
-                        <div class="text">
-                            <div class="name">{{contacts[counter].name}}</div>
-                            <div class="last_message">Ultimo accesso oggi alle</div>
+            <!-- sezione bottone attivazione notifiche -->
+            <div class="notifiche">
+                <i class="fas fa-bell-slash"></i>
+                <div class="text">
+                    <span>Ricevi notifiche di nuovi messaggi</span>
+                    <div class="btn_text">Attiva notifiche desktop</div>
+                </div>
+            </div>
+
+            <!-- sezione input di ricerca tra i contatti -->
+            <div class="input_src">
+                <input type="text" placeholder="Cerca o inizia una nuova chat" v-model = "insContact">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <!-- sezione contatti -->
+            <ul class="contacts">
+                <li 
+                    v-if ="searchContact(i)"
+                    v-for="(contact, i) in contacts" 
+                    :class="counter == i ? 'selected' : '' "
+                    @click="selectContact(i)"
+                >
+                    <img :src=" 'img/avatar'+ contact.avatar +'.jpg' " alt="">
+                    <div class="name">{{contact.name}}</div>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- colonna di destra con la finestra dei messaggi -->
+        <div class="col_dx left">
+            <!-- sezione contatto selezionato -->
+            <div class="contact_selected">
+                <div class="profile">
+                    <img :src=" 'img/avatar'+ contacts[counter].avatar +'.jpg' " alt="">
+                    <div class="text">
+                        <div class="name">{{contacts[counter].name}}</div>
+                        <div class="last_message">Ultimo accesso oggi alle</div>
+                    </div>
+                </div>
+
+                <div class="user_buttons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-paperclip"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+
+            <!-- finestra di dialogo con il contatto selezionato -->
+            <div class="content_message">
+                <ul class="messages">
+                    <li v-for = "message in contacts[counter].messages" class="clearfix">
+                        <div class="message" :class=" message.status == 'sent' ? 'user_msg right' : 'contact_msg left' ">
+                            <span>{{message.message}}</span>
+                            <div class="date_message">{{message.date}}</div>
                         </div>
-                    </div>
+                    </li>
+                </ul>
+            </div>
 
-                    <div class="user_buttons">
-                        <i class="fas fa-search"></i>
-                        <i class="fas fa-paperclip"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
-                </div>
-
-                <!-- finestra di dialogo con il contatto selezionato -->
-                <div class="content_message">
-                    <ul class="messages">
-                        <li v-for = "message in contacts[counter].messages" class="clearfix">
-                            <div class="message" :class=" message.status == 'sent' ? 'user_msg right' : 'contact_msg left' ">
-                                <span>{{message.message}}</span>
-                                <div class="date_message">{{message.date}}</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- sezione input messaggio dell'utente user -->
-                <div class="input_message">
-                    <i class="far fa-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio" v-model = "newUserMsg" @keyup.enter = "sentMessage()">
-                    <i class="fas fa-microphone"></i>
-                </div>
+            <!-- sezione input messaggio dell'utente user -->
+            <div class="input_message">
+                <i class="far fa-smile"></i>
+                <input type="text" placeholder="Scrivi un messaggio" v-model = "newUserMsg" @keyup.enter = "sentMessage()">
+                <i class="fas fa-microphone"></i>
             </div>
         </div>
 
     </div>
 
+    
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
