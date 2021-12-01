@@ -117,7 +117,7 @@ const app = new Vue({
             );
             this.newUserMsg = '';
 
-            setTimeout(this.receveMessage, 1000);
+            setTimeout(this.receveMessage, 3000);
         },
 
         receveMessage : function() {
@@ -147,6 +147,11 @@ const app = new Vue({
         lastMessage : function(i) {
             const position = this.contacts[i].messages.length - 1;
             return this.contacts[i].messages[position].message
+        },
+
+        lastStatus : function(i) {
+            const position = this.contacts[i].messages.length - 1;
+            return this.contacts[i].messages[position].status
         }
     }
 })

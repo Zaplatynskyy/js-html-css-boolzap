@@ -63,7 +63,8 @@
                             <div class="name left">{{contact.name}}</div>
                             <div class="last_msg_date right">{{lastMessageDate(i)}}</div>
                         </div>
-                        <div class="last_contact_msg" :class="{black : (counter == i)}">{{lastMessage(i)}}</div>
+                        <i v-show = "lastStatus(i) == 'sent'"  class="fas fa-check"></i>
+                        <span class="last_contact_msg" :class="{black : (counter == i)}">{{lastMessage(i)}}</span>
                     </div>
                     
                 </li>
@@ -93,10 +94,13 @@
             <!-- finestra di dialogo con il contatto selezionato -->
             <div class="content_message">
                 <ul class="messages">
-                    <li v-for = "message in contacts[counter].messages" class="clearfix">
+                    <li v-for = "(message, i) in contacts[counter].messages" class="clearfix">
                         <div class="message" :class=" message.status == 'sent' ? 'user_msg right' : 'contact_msg left' ">
                             <span>{{message.message}}</span>
-                            <div class="date_message">{{message.date}}</div>
+                            <div class="date_message">
+                                {{message.date}}
+                                <i v-show = "message.status == 'sent'" class="fas fa-check"></i>
+                            </div>
                         </div>
                     </li>
                 </ul>
