@@ -114,12 +114,19 @@
 
                         <li v-for = "(message, i) in contacts[counter].messages" class="clearfix">
                             
-                            <div class="message" :class=" message.status == 'sent' ? 'user_msg right' : 'contact_msg left' ">
-                                <span>{{message.message}}</span>
+                            <div class="message" :class="message.status">
+
+                                <span class="message_text">{{message.message}}</span>
+
+                                <div class="settings_msg" :class="message.status">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+
                                 <div class="date_message">
-                                    {{message.date}}
+                                    {{dateInHours(message)}}
                                     <i v-show = "message.status == 'sent'" class="fas fa-check"></i>
                                 </div>
+
                             </div>
 
                         </li>

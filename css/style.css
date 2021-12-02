@@ -158,7 +158,7 @@ ul.contacts li:hover {
 }
 
 .text_contact i,
-.messages i{
+.date_message i{
     font-size: 12px;
     color: #4fc3f7;
     margin: 0 2px;
@@ -270,25 +270,56 @@ ul.contacts li:hover {
 }
 
 .messages .message {
-    width: 45%;
+    max-width: 45%;
     padding: 20px 10px 0 20px;
     margin-bottom: 10px;
     border-radius: 15px;
+    position: relative;
 }
 
-.messages .contact_msg {
+.message_text {
+    margin-right: 50px;
+}
+
+.settings_msg {
+    color: grey;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border-radius: 100%;
+    display: none;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.settings_msg.received {
+    box-shadow: 0px 0px 15px 10px #ffffff;
+}
+
+.settings_msg.sent {
+    box-shadow: 0px 0px 15px 10px #D5F9BA;
+}
+
+.message:hover .settings_msg {
+    display: block;
+}
+
+.message.received {
     background-color: #ffffff;
+    float: left;
 }
 
-.messages .user_msg {
+.message.sent {
     background-color: #d5f9ba;
+    float: right;
 }
 
 .date_message {
     color: grey;
-    font-size: 11px;
+    font-size: 10px;
     text-align: right;
-    padding: 5px 0;
+    position: relative;
+    bottom: 5px;
 }
 
 
