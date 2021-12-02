@@ -39,6 +39,11 @@ img {
     margin-right: 5px;
 }
 
+input:focus-visible {
+    outline-color: lightgrey;
+    outline-style: ridge;
+}
+
 .selected {
     background-color: #e9ebeb;
 }
@@ -117,10 +122,7 @@ img {
     padding: 10px 80px;
 }
 
-.input_src input:focus-visible, .input_message input:focus-visible {
-    outline-color: lightgrey;
-    outline-style: ridge;
-}
+
 
 .input_src i {
     color: #b6b9bb;
@@ -147,6 +149,7 @@ ul.contacts li:hover {
     background-color: #e9ebeb;
 }
 
+/* info contatto */
 .text_contact {
     width: 100%;
     margin-left: 15px;
@@ -183,6 +186,7 @@ ul.contacts li:hover {
     height: 95vh;
 }
 
+/* conteiner contenente immagine e testo su come collegare whatsapp. Finestra visibile al caricamento della pagina */
 .container_contact_unselected {
     height: 100%;
     background-color: #f8f9fb;
@@ -190,6 +194,10 @@ ul.contacts li:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.container_contact_unselected img {
+    width: 300px;
 }
 
 .title {
@@ -227,10 +235,7 @@ ul.contacts li:hover {
     text-decoration: underline;
 }
 
-.container_contact_unselected img {
-    width: 300px;
-}
-
+/* container contenente la messagistica con l'utente selezionato */
 .container_contact_selected {
     height: 100%;
 }
@@ -277,11 +282,22 @@ ul.contacts li:hover {
     position: relative;
 }
 
+.message.received {
+    background-color: #ffffff;
+    float: left;
+}
+
+.message.sent {
+    background-color: #d5f9ba;
+    float: right;
+}
+
 .message_text {
     margin-right: 50px; 
     overflow-wrap: break-word;
 }
 
+/* blocco css per le impostazioni del messaggio */
 .settings_msg {
     color: grey;
     position: absolute;
@@ -291,6 +307,14 @@ ul.contacts li:hover {
     display: none;
     cursor: pointer;
     z-index: 1;
+}
+
+.settings_msg.d_block {
+    display: block;
+}
+
+.message:hover .settings_msg {
+    display: block;
 }
 
 .settings_msg.received {
@@ -303,34 +327,20 @@ ul.contacts li:hover {
     box-shadow: 0px 0px 15px 10px #D5F9BA;
 }
 
-.message:hover .settings_msg {
-    display: block;
-}
-
-.d_block {
-    display: block;
-}
-
-.message.received {
-    background-color: #ffffff;
-    float: left;
-}
-
-.message.sent {
-    background-color: #d5f9ba;
-    float: right;
-}
-
 .settings {
     width: 200px;
     background-color: white;
     position: absolute;
-    right: 0px;
     padding: 10px 0;
     box-shadow: 0px 0px 10px 0px #CCCCCC;
+    z-index: 2;
 }
 
-.set {
+.settings.sent {
+    right: 0px;
+}
+
+.settings .set {
     height: 40px;
     line-height: 40px;
     padding: 0 30px;
@@ -369,62 +379,3 @@ ul.contacts li:hover {
     margin: 0 30px;
     cursor: pointer;
 }
-
-/* .input_src input:focus-visible, 
-.input_message input:focus-visible {
-    outline-color: lightgrey;
-    outline-style: ridge;
-} */
-
-
-
-/* ******DEBUG****** */
-
-/* .debug #root {
-    background-color: green;
-} */
-
-/* debug colonna di destra */
-/* .debug .col_sx {
-    background-color: red;
-} */
-
-/* .debug .user {
-    height: 60px;
-    background-color: blue;
-} */
-
-/* .debug .notifiche {
-    height: 80px;
-    background-color: gray;
-} */
-
-/* .debug .input_src {
-    height: 50px;
-    background-color: blue;
-} */
-
-/* ul.contacts li {
-    height: 80px;
-    border: 1px solid black;
-} */
-/* debug colonna di sinistra */
-/* .debug .col_dx {
-    background-color: yellow;
-} */
-
-/* .debug .contact_selected {
-    height: 60px;
-    background-color: blue;
-    border-left: 1px solid black;
-} */
-
-/* .debug .content_message {
-    height: calc(100% - 120px);
-    background-color: lightgrey;
-} */
-
-/* .debug .input_message {
-    height: 60px;
-    background-color: #f3eeea
-} */

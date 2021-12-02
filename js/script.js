@@ -182,40 +182,46 @@ const app = new Vue({
         counter : null,
         newUserMsg : '',
         insContact : '',
-        string : '',
         lastMsgDate : ''
     },
 
     methods : {
+        // funzione che assegna l'indice al valore counter che porterà quindi la posizione dell'elemento selezionato
         selectContact : function(i) {
             this.counter = i;
         },
 
+        // funzione di invio messaggio inserito in input con la relativa data ed ora di invio, contenuto in un oggetto che pusceremo nell'array nell'apposita area
         sentMessage : function() {
             const data = dayjs().format("DD/MM/YYYY HH:mm:ss");
             this.contacts[this.counter].messages.push(
                 {
                     date : data,
                     message : this.newUserMsg,
-                    status : 'sent'
+                    status : 'sent',
+                    setting : false
                 }
             );
             this.newUserMsg = '';
-
+            
+            // dopo 3 secondi richiama la funzione utente pc risponde
             setTimeout(this.receveMessage, 3000);
         },
 
+        // funzione di ricevi messaggio automatico dal pc con la relativa data ed ora di invio, contenuto in un oggetto che pusceremo nell'array nell'apposita area
         receveMessage : function() {
             const data = dayjs().format("DD/MM/YYYY HH:mm:ss");
             this.contacts[this.counter].messages.push(
                 {
                     date : data,
                     message : 'Ok',
-                    status : 'received'
+                    status : 'received',
+                    setting : false
                 }
             );
         },
 
+        // funzione di controllo se le lettere/nome inserite/o corrisponde ai nomi nella la lista dei contatti
         searchContact : function(i) {
             if( this.contacts[i].name.toLowerCase().includes(this.insContact.toLowerCase()) ) {
                 return true
@@ -224,6 +230,7 @@ const app = new Vue({
             }
         },
 
+        // funzione che restituisce la data dell'ultimo messaggio ricevuto/inviato 
         lastMessageDate : function(i) {
             if(this.contacts[i].messages.length >= 1) {
                 dayjs.extend(dayjs_plugin_customParseFormat);
@@ -236,6 +243,7 @@ const app = new Vue({
             }
         },
 
+        // funzione che restituisce l'ultimo messaggio ricevuto/inviato
         lastMessage : function(i) {
             if (this.contacts[i].messages.length >= 1) {
                 const position = this.contacts[i].messages.length - 1;
@@ -244,6 +252,7 @@ const app = new Vue({
             
         },
 
+        // funzione che restituisce lo status(sent/recevied) dell'ultimo messaggio
         lastStatus : function(i) {
             if (this.contacts[i].messages.length >= 1) {
                 const position = this.contacts[i].messages.length - 1;
@@ -251,6 +260,7 @@ const app = new Vue({
             }
         },
 
+        // funzioneche restituisce l'orario di invio/ricevuta messaggio
         dateInHours : function(array) {
             dayjs.extend(dayjs_plugin_customParseFormat);
             let date = array.date;
@@ -259,55 +269,12 @@ const app = new Vue({
             return date
         },
 
+        // funzione che elimina il messaggio selezionato
         deleteMessage : function(counter, i) {
             this.contacts[counter].messages.splice(i, 1);
         }
     }
 })
-
-// contacts: [
-//     {
-        //     name: 'Giacomo',
-        //     avatar: '_7',
-        //     visible: true,
-        //     messages: [{
-        //         date: '29/11/2021 09:30:55',
-        //         message: 'Hola, ascolta ci vediamo il pomeriggio?',
-        //         status: 'sent',
-        //         setting : false
-        //     },
-        //     {
-        //         date: '29/11/2021 09:50:00',
-        //         message: 'Non ci sono, domani va bene lo stesso?',
-        //         status: 'received',
-        //         setting : false
-        //     },
-        //     {
-        //         date: '29/11/2021 09:55:55',
-        //         message: 'Va bene, ci vediamo alle 15?',
-        //         status: 'sent',
-        //         setting : false
-        //     },
-        //     {
-        //         date: '29/11/2021 10:05:16',
-        //         message: 'Alle 15 va bene.',
-        //         status: 'received',
-        //         setting : false
-        //     },
-        //     {
-        //         date: '29/11/2021 10:05:50',
-        //         message: 'Mi raccomando porta gli appunti',
-        //         status: 'received',
-        //         setting : false
-        //     },
-        //     {
-        //         date: '29/11/2021 10:30:00',
-        //         message: 'Assolutamente, a domani allora!',
-        //         status: 'sent',
-        //         setting : false
-        //     },
-        //     ],
-        // },
 
 // Milestone 1
 // ● Replica della grafica con la possibilità di avere messaggi scritti dall’utente (verdi) e

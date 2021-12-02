@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
+    <!-- link collegamento file css -->
     <link rel="stylesheet" href="css/style.css">
     <!-- cdn font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet"> 
 </head>
-<body class="debug">
+<body>
     
     <!-- elemento root che contiene la finestra whatsapp -->
     <div id="root" class="container clearfix">
@@ -22,11 +23,13 @@
         <div class="col_sx left">
             <!-- sezione utente user con foto profilo, nome e bottoni utili -->
             <div class="user">
+                <!-- profilo utente user -->
                 <div class="profile">
                     <img src="img/avatar_5.jpg" alt="">
                     <div class="name">Nome Utente</div>
                 </div>
 
+                <!-- bottoni di collegamento ed impostazione colonna utente user -->
                 <div class="user_buttons">
                     <i class="fas fa-circle-notch"></i>
                     <i class="fas fa-comment-alt"></i>
@@ -37,6 +40,7 @@
             <!-- sezione bottone attivazione notifiche -->
             <div class="notifiche">
                 <i class="fas fa-bell-slash"></i>
+
                 <div class="text">
                     <span>Ricevi notifiche di nuovi messaggi</span>
                     <div class="btn_text">Attiva notifiche desktop</div>
@@ -46,24 +50,33 @@
             <!-- sezione input di ricerca tra i contatti -->
             <div class="input_src">
                 <input type="text" placeholder="Cerca o inizia una nuova chat" v-model = "insContact">
+                
                 <i class="fas fa-search"></i>
             </div>
 
             <!-- sezione contatti -->
             <ul class="contacts">
+
+                <!-- sezione html del singolo contatto ciclato,al click seleziona il contatto -->
                 <li 
                     v-if ="searchContact(i)"
                     v-for="(contact, i) in contacts" 
                     :class="counter == i ? 'selected' : '' "
                     @click="selectContact(i)"
                 >
+                    <!-- immagine contatto -->
                     <img :src=" 'img/avatar'+ contact.avatar +'.jpg' " alt="">
+
+                    <!-- info contatto,nome ultimo messaggio e relativa data -->
                     <div class="text_contact">
+
                         <div class="name_last_msg clearfix">
                             <div class="name left">{{contact.name}}</div>
                             <div class="last_msg_date right">{{lastMessageDate(i)}}</div>
                         </div>
+                        <!-- spunta di messaggio letto nel caso in cui sia un messaggio inviato dall'utente user -->
                         <i v-show = "lastStatus(i) == 'sent'"  class="fas fa-check"></i>
+
                         <span class="last_contact_msg" :class="{black : (counter == i)}">{{lastMessage(i)}}</span>
                     </div>
                     
@@ -75,6 +88,7 @@
         <!-- colonna di destra con la finestra dei messaggi -->
         <div class="col_dx left">
 
+            <!-- conteiner contenente immagine e testo su come collegare whatsapp. Finestra visibile al caricamento della pagina -->
             <div v-if="counter == null" class="container_contact_unselected">
 
                 <img src="img/intro-whatsapp.jpg" alt="">
@@ -90,17 +104,23 @@
 
             </div>
             
+            <!-- container contenente la messagistica con l'utente selezionato -->
             <div v-else class="container_contact_selected">
+
                 <!-- sezione contatto selezionato -->
                 <div class="contact_selected">
                     <div class="profile">
+                        <!-- immagine contatto selezionato -->
                         <img :src=" 'img/avatar'+ contacts[counter].avatar +'.jpg' " alt="">
+                        
+                        <!-- info sul contatto selezionato, nome e ultimo accesso -->
                         <div class="text">
                             <div class="name">{{contacts[counter].name}}</div>
-                            <div class="last_message">Ultimo accesso {{lastMessageDate(counter)}}</div>
+                            <div class="last_access">Ultimo accesso {{lastMessageDate(counter)}}</div>
                         </div>
                     </div>
 
+                    <!-- bottoni di collegamento nella sezione dell'utente selezionato,cerca allega ed impostazioni -->
                     <div class="user_buttons">
                         <i class="fas fa-search"></i>
                         <i class="fas fa-paperclip"></i>
@@ -110,23 +130,27 @@
 
                 <!-- finestra di dialogo con il contatto selezionato -->
                 <div class="content_message">
+                    <!-- lista messaggi scambiati con l'utente selezionato -->
                     <ul class="messages">
-
+                        <!-- blocco html ciclato contenente la singola casella messaggio con le relative info  -->
                         <li v-for = "(message, i) in contacts[counter].messages" class="clearfix">
-                            
+                            <!-- contenitore messaggio floattato in base al messaggio, se inviato o ricevuto -->
                             <div class="message" :class="message.status">
-
                                 <span class="message_text">{{message.message}}</span>
 
-                                <!-- div, al click compare la finestra con le impostazioni -->
+                                <!-- blocco html per le impostazioni del messaggio -->
                                 <div class="settings_msg" :class="[{ d_block: message.setting}, message.status]">
+                                    <!-- arrow_down che al click apre la lista impostazioni (cambia il valore booleano di setting) -->
                                     <i @click="message.setting = !message.setting" class="fas fa-chevron-down"></i>
-                                    <div v-show="message.setting" class="settings">
+
+                                    <!-- lista impostazioni visibile solo al setting = true -->
+                                    <div v-show="message.setting" class="settings" :class="message.status">
                                         <div class="set">Message info</div>
                                         <div class="set" @click="deleteMessage(counter, i)">Delete message</div>
                                     </div>
                                 </div>
 
+                                <!-- ora invio/ricevuto messaggio -->
                                 <div class="date_message">
                                     {{dateInHours(message)}}
                                     <i v-show = "message.status == 'sent'" class="fas fa-check"></i>
@@ -142,7 +166,9 @@
                 <!-- sezione input messaggio dell'utente user -->
                 <div class="input_message">
                     <i class="far fa-smile"></i>
+
                     <input type="text" placeholder="Scrivi un messaggio" v-model = "newUserMsg" @keyup.enter = "sentMessage()">
+
                     <i class="fas fa-microphone"></i>
                 </div>
             </div>
@@ -151,13 +177,15 @@
 
     </div>
 
-    
+    <!-- cdn plug_in customParseFormat di datajs -->
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/plugin/customParseFormat.min.js" integrity="sha512-nbPJ/ANJ1DCwUWGyfS+PY7RMysy5UnFyOzPTjzcphOuVbUqrukQAZ9kkNvTkPmItJRuuL5IqNufQTHPyxxpmig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
-
+    <!-- cdn vuejs -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- cdn datajs -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+    <!-- link collegamento file js -->
     <script src="js/script.js"></script>
 </body>
 </html>
