@@ -179,7 +179,7 @@ const app = new Vue({
             },
         ],
 
-        counter : 0,
+        counter : null,
         newUserMsg : '',
         insContact : '',
         string : '',
@@ -225,23 +225,30 @@ const app = new Vue({
         },
 
         lastMessageDate : function(i) {
-            dayjs.extend(dayjs_plugin_customParseFormat);
-            const position = this.contacts[i].messages.length - 1;
-            let date = this.contacts[i].messages[position].date;
-            
-            date = dayjs(date, "DD/MM/YYYY hh:mm:ss").format('DD/MM/YYYY');
-            
-            return date
+            if(this.contacts[i].messages.length >= 1) {
+                dayjs.extend(dayjs_plugin_customParseFormat);
+                const position = this.contacts[i].messages.length - 1;
+                let date = this.contacts[i].messages[position].date;
+                
+                date = dayjs(date, "DD/MM/YYYY hh:mm:ss").format('DD/MM/YYYY');
+                
+                return date
+            }
         },
 
         lastMessage : function(i) {
-            const position = this.contacts[i].messages.length - 1;
-            return this.contacts[i].messages[position].message
+            if (this.contacts[i].messages.length >= 1) {
+                const position = this.contacts[i].messages.length - 1;
+                return this.contacts[i].messages[position].message
+            }
+            
         },
 
         lastStatus : function(i) {
-            const position = this.contacts[i].messages.length - 1;
-            return this.contacts[i].messages[position].status
+            if (this.contacts[i].messages.length >= 1) {
+                const position = this.contacts[i].messages.length - 1;
+                return this.contacts[i].messages[position].status
+            }
         },
 
         dateInHours : function(array) {
