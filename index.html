@@ -119,9 +119,12 @@
                                 <span class="message_text">{{message.message}}</span>
 
                                 <!-- div, al click compare la finestra con le impostazioni -->
-                                <div class="settings_msg" :class="message.status" @click="settingsShow(message)">
-                                    <i class="fas fa-chevron-down"></i>
-                                    <div v-show="message.setting" class="settings">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime repudiandae ab, eaque at inventore aspernatur dolores voluptates. Ut nihil totam fuga officia, eligendi maiores neque quis perferendis voluptatum porro qui!</div>
+                                <div class="settings_msg" :class="[{ d_block: message.setting}, message.status]">
+                                    <i @click="message.setting = !message.setting" class="fas fa-chevron-down"></i>
+                                    <div v-show="message.setting" class="settings">
+                                        <div class="set">Message info</div>
+                                        <div class="set" @click="deleteMessage(counter, i)">Delete message</div>
+                                    </div>
                                 </div>
 
                                 <div class="date_message">

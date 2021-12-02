@@ -278,7 +278,8 @@ ul.contacts li:hover {
 }
 
 .message_text {
-    margin-right: 50px;
+    margin-right: 50px; 
+    overflow-wrap: break-word;
 }
 
 .settings_msg {
@@ -293,14 +294,20 @@ ul.contacts li:hover {
 }
 
 .settings_msg.received {
+    background-color: #fff;
     box-shadow: 0px 0px 15px 10px #ffffff;
 }
 
 .settings_msg.sent {
+    background-color: #D5F9BA;
     box-shadow: 0px 0px 15px 10px #D5F9BA;
 }
 
 .message:hover .settings_msg {
+    display: block;
+}
+
+.d_block {
     display: block;
 }
 
@@ -312,6 +319,25 @@ ul.contacts li:hover {
 .message.sent {
     background-color: #d5f9ba;
     float: right;
+}
+
+.settings {
+    width: 200px;
+    background-color: white;
+    position: absolute;
+    right: 0px;
+    padding: 10px 0;
+    box-shadow: 0px 0px 10px 0px #CCCCCC;
+}
+
+.set {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 30px;
+}
+
+.set:hover {
+    background-color: #f1f1f1;
 }
 
 .date_message {
