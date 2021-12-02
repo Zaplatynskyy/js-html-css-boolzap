@@ -118,8 +118,10 @@
 
                                 <span class="message_text">{{message.message}}</span>
 
-                                <div class="settings_msg" :class="message.status">
+                                <!-- div, al click compare la finestra con le impostazioni -->
+                                <div class="settings_msg" :class="message.status" @click="settingsShow(message)">
                                     <i class="fas fa-chevron-down"></i>
+                                    <div v-show="message.setting" class="settings">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime repudiandae ab, eaque at inventore aspernatur dolores voluptates. Ut nihil totam fuga officia, eligendi maiores neque quis perferendis voluptatum porro qui!</div>
                                 </div>
 
                                 <div class="date_message">
