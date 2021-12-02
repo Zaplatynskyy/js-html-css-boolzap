@@ -191,7 +191,7 @@ const app = new Vue({
         },
 
         sentMessage : function() {
-            const data = dayjs().format('DD/MM/YYYY HH:mm:ss');
+            const data = dayjs().format('HH:mm');
             this.contacts[this.counter].messages.push(
                 {
                     date : data,
@@ -205,7 +205,7 @@ const app = new Vue({
         },
 
         receveMessage : function() {
-            const data = dayjs().format('DD/MM/YYYY HH:mm:ss');
+            const data = dayjs().format('HH:mm');
             this.contacts[this.counter].messages.push(
                 {
                     date : data,
@@ -225,7 +225,11 @@ const app = new Vue({
 
         lastMessageDate : function(i) {
             const position = this.contacts[i].messages.length - 1;
-            return this.contacts[i].messages[position].date
+            let date = this.contacts[i].messages[position].date;
+            console.log(date);
+            date = dayjs(date).format('DD/MM/YYYY');
+            console.log(date);
+            return date
         },
 
         lastMessage : function(i) {
