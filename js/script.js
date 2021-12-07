@@ -172,6 +172,13 @@ const app = new Vue({
         // funzione che assegna l'indice al valore counter che porterà quindi la posizione dell'elemento selezionato
         selectContact : function(i) {
             this.counter = i;
+            if(this.popUp.setting) {
+                this.popUp = {
+                    index : null,
+                    position : null,
+                    setting : false
+                } 
+            }
         },
 
         // funzione di invio messaggio inserito in input con la relativa data ed ora di invio, contenuto in un oggetto che pusceremo nell'array nell'apposita area
