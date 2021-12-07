@@ -139,12 +139,12 @@
                                 <span class="message_text">{{message.message}}</span>
 
                                 <!-- blocco html per le impostazioni del messaggio -->
-                                <div class="settings_msg" :class="[{ d_block: message.setting}, message.status]">
+                                <div class="settings_msg" :class="[{ d_block: popUp.setting && i == popUp.index}, message.status]">
                                     <!-- arrow_down che al click apre la lista impostazioni (cambia il valore booleano di setting) -->
-                                    <i @click="message.setting = !message.setting" class="fas fa-chevron-down"></i>
+                                    <i @click="popUpping(i,counter)" class="fas fa-chevron-down"></i>
 
                                     <!-- lista impostazioni visibile solo al setting = true -->
-                                    <div v-show="message.setting" class="settings" :class="message.status">
+                                    <div v-show="popUp.setting && i == popUp.index" class="settings" :class="message.status">
                                         <div class="set">Message info</div>
                                         <div class="set" @click="deleteMessage(counter, i)">Delete message</div>
                                     </div>
