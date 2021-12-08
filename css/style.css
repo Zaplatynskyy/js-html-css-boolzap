@@ -1,4 +1,66 @@
 /* ******COMMONS****** */
+:root {
+    --bg_theme: linear-gradient(0deg, rgba(217,219,212,1) 85%, rgba(0,150,136,1) 85%);
+    --col_1: #ffffff; /*colonna di destra*/
+    --col_2: #eaeaea; /*colonna di sinistra*/
+    --icon_color: #b1b1b1; /*font icons*/
+    --col_3: #8edafc; /*riga notifiche*/
+    --col_4: #fafafa; /*background input*/
+    --col_5: #b6b9bb; /*icon input*/
+    --selected: #e9ebeb; /*bgc row selected*/
+    --grey: #808080;
+    --bg_col_unselected: #f8f9fb; /*bgc col di sx al caricamento*/
+    --title: #747474; /*bgc title col di sx al caricamento*/
+    --sub_foot: #9b9c9d; /*bgc subtitle and text col di sx al caricamento*/
+    --msg_sent: #d5f9ba; /*bgc message sent*/
+    --msg_recevied: #ffffff;
+    --set_hover: #f1f1f1; /*bgc hover setting message*/
+    --bgc_input_msg: #f3eeea; /*bgc input message*/
+    --icon_input_msg: #6b7376; /*bgc icons input message*/
+    --font_color: #000000;
+    --border: #f2f2f2;
+    --subtitle_border: #e5e6e6;
+    --border_left_selected: #e0e0e0;
+    --shadow_container: #CECECE;
+    --font_last_msg: #222;
+    --bgc_input_text: #ffffff; 
+    --color_input_text: #747474;
+    --bgc_setting_msg: #ffffff;
+    --invert_img: url('../img/mine.jpg');
+    --shadow_setting: #CCCCCC;
+}
+
+:root.dark_theme {
+    --bg_theme: linear-gradient(0deg, #090e11 85%, #090e11 85%);
+    --col_1: #131c21; /*colonna di destra*/
+    --col_2: #2a2f32; /*colonna di sinistra*/
+    --icon_color: #b1b3b5; /*font icons*/
+    --col_3: #085373; /*riga notifiche*/
+    --col_4: #131c21; /*background input*/
+    --col_5: #131c21; /*icon input*/
+    --selected: #323739; /*bgc row selected*/
+    --grey: #9fa2a5;
+    --bg_col_unselected: #262d31; /*bgc col di sx al caricamento*/
+    --title: #d8d9db; /*bgc title col di sx al caricamento*/
+    --sub_foot: #96999b; /*bgc subtitle and text col di sx al caricamento*/
+    --msg_sent: #056162; /*bgc message sent*/
+    --msg_recevied: #262d31;
+    --set_hover: #1c1f20; /*bgc hover setting message*/
+    --bgc_input_msg: #1e2428; /*bgc input message*/
+    --icon_input_msg: #828689; /*bgc icons input message*/
+    --font_color: #dfe0e1;
+    --border: #131c21;
+    --subtitle_border: #3d4347;
+    --border_left_selected: #3c4346;
+    --shadow_container: #090e11;
+    --font_last_msg : #cbcccd;
+    --bgc_input_text: #323739;
+    --color_input_text: #848788;
+    --bgc_setting_msg: #2a2f32;
+    --invert_img: url('../img/mine_invert.jpg');
+    --shadow_setting: #2a2f32;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +70,8 @@
 body {
     font-family: 'Lato', sans-serif;
     height: 100vh;
-    background: linear-gradient(0deg, rgba(217,219,212,1) 85%, rgba(0,150,136,1) 85%);
+    color: var(--font_color);
+    background: var(--bg_theme);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +79,7 @@ body {
 
 .container {
     width: 80%;
-    box-shadow: 0px 0px 1px 1px #CECECE;
+    box-shadow: 0px 0px 1px 1px var(--shadow_container);
 }
 
 .clearfix::after {
@@ -45,7 +108,7 @@ input:focus-visible {
 }
 
 .selected {
-    background-color: #e9ebeb;
+    background-color: var(--selected);
 }
 
 /******** sezione colonna di sinistra */
@@ -53,13 +116,13 @@ input:focus-visible {
 .col_sx {
     width: 35%;
     height: 95vh;
-    background-color: #ffffff;
+    background-color: var(--col_1);
 }
 
 /* <!-- sezione utente user con foto profilo, nome e bottoni utili --> */
 .user, .contact_selected {
     height: 60px;
-    background: #eaeaea;
+    background: var(--col_2);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -72,7 +135,7 @@ input:focus-visible {
 }
 
 .user_buttons i {
-    color: #b1b1b1;
+    color: var(--icon_color);
     font-size: 20px;
     margin: 0 10px;
     cursor: pointer;
@@ -80,16 +143,16 @@ input:focus-visible {
 
 /* sezione bottone attivazione notifiche */
 .notifiche {
-    background-color: #8edafc;
+    background-color: var(--col_3);
     display: flex;
     align-items: center;
     padding: 10px;
 }
 
 .notifiche i {
-    color: #8edafc;
+    color: var(--col_3);
     font-size: 20px;
-    background-color: white;
+    background-color: var(--col_1);
     border-radius: 100%;
     margin-right: 10px;
     padding: 15px;
@@ -108,7 +171,7 @@ input:focus-visible {
 
 /* sezione input di ricerca tra i contatti */
 .input_src {
-    background-color: #fafafa;
+    background-color: var(--col_4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,6 +181,8 @@ input:focus-visible {
 
 .input_src input {
     width: 95%;
+    color: var(--color_input_text);
+    background-color: var(--bgc_input_text);
     border: none;
     padding: 10px 80px;
 }
@@ -125,7 +190,7 @@ input:focus-visible {
 
 
 .input_src i {
-    color: #b6b9bb;
+    color: var(--col_5);
     position: absolute;
     left: 40px;
 }
@@ -139,14 +204,14 @@ input:focus-visible {
 ul.contacts li {
     list-style: none;
     padding: 10px;
-    border-top: 1px solid #f2f2f2;
+    border-top: 1px solid var(--border);
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
 ul.contacts li:hover {
-    background-color: #e9ebeb;
+    background-color: var(--selected);
 }
 
 /* info contatto */
@@ -157,7 +222,7 @@ ul.contacts li:hover {
 
 .last_msg_date {
     font-size: 12px;
-    color: grey;
+    color: var(--grey);
 }
 
 .text_contact i,
@@ -169,13 +234,13 @@ ul.contacts li:hover {
  
 .last_contact_msg {
     font-size: 14px;
-    color: grey;
+    color: var(--grey);
     margin-top: 5px;
 }
 
 .last_contact_msg.black {
     font-weight: 100;
-    color: #222
+    color: var(--font_last_msg);
 }
 
 
@@ -189,7 +254,7 @@ ul.contacts li:hover {
 /* conteiner contenente immagine e testo su come collegare whatsapp. Finestra visibile al caricamento della pagina */
 .container_contact_unselected {
     height: 100%;
-    background-color: #f8f9fb;
+    background-color: var(--bg_col_unselected);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -202,20 +267,20 @@ ul.contacts li:hover {
 
 .title {
     font-size: 32px;
-    color: #747474;
+    color: var(--title);
     margin: 20px 0;
 }
 
 .subtitle{
     width: 70%;
     text-align: center;
-    color: #9b9c9d;
-    border-bottom: 1px solid #e5e6e6;
+    color: var(--sub_foot);
+    border-bottom: 1px solid var(--subtitle_border);
     padding-bottom: 40px;
 }
 
 .footer {
-    color: #9b9c9d;
+    color: var(--sub_foot);
     margin-top: 20px;
     padding-top: 20px;
 }
@@ -242,7 +307,7 @@ ul.contacts li:hover {
 
 /* sezione contatto selezionato */
 .contact_selected {
-    border-left: 1px solid #e0e0e0;
+    border-left: 1px solid var(--border_left_selected);
 }
 
 /* .user, .contact_selected {
@@ -259,13 +324,13 @@ ul.contacts li:hover {
 }
 
 .text .last_message {
-    color: grey;
+    color: var(--grey);
 }
 
 /* finestra di dialogo con il contatto selezionato */
 .content_message {
     height: calc(100% - 120px);
-    background-image: url('../img/mine.jpg');
+    background-image: var(--invert_img);
     padding: 40px 80px;
     overflow: auto;
 }
@@ -283,12 +348,12 @@ ul.contacts li:hover {
 }
 
 .message.received {
-    background-color: #ffffff;
+    background-color: var(--msg_recevied);
     float: left;
 }
 
 .message.sent {
-    background-color: #d5f9ba;
+    background-color: var(--msg_sent);
     float: right;
 }
 
@@ -299,7 +364,7 @@ ul.contacts li:hover {
 
 /* blocco css per le impostazioni del messaggio */
 .settings_msg {
-    color: grey;
+    color: var(--grey);
     position: absolute;
     top: 15px;
     right: 15px;
@@ -318,21 +383,21 @@ ul.contacts li:hover {
 }
 
 .settings_msg.received {
-    background-color: #fff;
-    box-shadow: 0px 0px 15px 10px #ffffff;
+    background-color: var(--msg_recevied);
+    box-shadow: 0px 0px 15px 10px var(--msg_recevied);
 }
 
 .settings_msg.sent {
-    background-color: #D5F9BA;
-    box-shadow: 0px 0px 15px 10px #D5F9BA;
+    background-color: var(--msg_sent);
+    box-shadow: 0px 0px 15px 10px var(--msg_sent);
 }
 
 .settings {
     width: 200px;
-    background-color: white;
+    background-color: var(--bgc_setting_msg);
     position: absolute;
     padding: 10px 0;
-    box-shadow: 0px 0px 10px 0px #CCCCCC;
+    box-shadow: 0px 0px 10px 0px var(--shadow_setting);
     z-index: 2;
 }
 
@@ -347,11 +412,11 @@ ul.contacts li:hover {
 }
 
 .set:hover {
-    background-color: #f1f1f1;
+    background-color: var(--set_hover);
 }
 
 .date_message {
-    color: grey;
+    color: var(--grey);
     font-size: 10px;
     text-align: right;
     position: relative;
@@ -362,20 +427,22 @@ ul.contacts li:hover {
 /* sezione input messaggio dell'utente user */
 .input_message {
     height: 60px;
-    background-color: #f3eeea;
+    background-color: var(--bgc_input_msg);
     display: flex;
     align-items: center;
 }
 
 .input_message input {
     width: 100%;
+    color: var(--color_input_text);
+    background-color: var(--bgc_input_text);
     border: none;
     padding: 10px;
 }
 
 .input_message i {
     font-size: 20px;
-    color: #6b7376;
+    color: var(--icon_input_msg);
     margin: 0 30px;
     cursor: pointer;
 }

@@ -165,7 +165,8 @@ const app = new Vue({
             index : null,
             position : null,
             setting : false
-        }
+        },
+        darkTheme: false
     },
 
     methods : {
@@ -282,15 +283,19 @@ const app = new Vue({
                     setting : true
                 }
             }
+        },
+
+        changeMode : function() {
+            this.darkTheme = !this.darkTheme
+            if(this.darkTheme) {
+                document.querySelector("html").classList.add("dark_theme")
+            } else {
+                document.querySelector("html").classList.remove("dark_theme")
+            }
         }
     }
 })
 
-// popUp : {
-//     index : null,
-//     position : null,
-//     setting : false
-// }
 // Milestone 1
 // ● Replica della grafica con la possibilità di avere messaggi scritti dall’utente (verdi) e
 // dall’interlocutore (bianco) assegnando due classi CSS diverse

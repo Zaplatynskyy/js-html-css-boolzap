@@ -17,7 +17,7 @@
 <body>
     
     <!-- elemento root che contiene la finestra whatsapp -->
-    <div id="root" class="container clearfix">
+    <div id="root" class="container clearfix" :class="{dark_theme: darkTheme}">
         
         <!-- colonna di sinistra con la rubrica -->
         <div class="col_sx left">
@@ -33,7 +33,7 @@
                 <div class="user_buttons">
                     <i class="fas fa-circle-notch"></i>
                     <i class="fas fa-comment-alt"></i>
-                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-ellipsis-v" @click="changeMode()"></i>
                 </div>
             </div>
 
